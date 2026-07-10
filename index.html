@@ -11,6 +11,16 @@ function d$$(sel){
     return [...document.querySelectorAll(sel)];
 }
 
+//
+function showMd(md){
+    const cleanHtml = marked.parse(md);
+    d$("body").innerHTML = cleanHtml;
+    var eles = d$$("a");
+
+    for (let ele of eles)
+        ele.setAttribute("target","_blank");
+}
+    
 // 
 function main(){
     var url = new URL(location.href);
@@ -20,13 +30,11 @@ function main(){
         d$("body").innerHTML = "The param 'md' is needed in URL";
         return;
     }
-    const cleanHtml = marked.parse(md);
-    d$("body").innerHTML = cleanHtml;
-    var eles = d$$("a");
-
-    for (let ele of eles)
-        ele.setAttribute("target","_blank");
+    showMd(md);
 }
 
 window.onload = main;
+window.addEventListener('hashchange', function(event) {
+    showMd(window.location.hash);
+});
 </script>

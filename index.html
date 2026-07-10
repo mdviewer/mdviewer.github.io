@@ -35,6 +35,6 @@ function main(){
 
 window.onload = main;
 window.addEventListener('hashchange', function(event) {
-    showMd(window.location.hash);
+    showMd(window.location.hash.slice(1));
 });
 </script>

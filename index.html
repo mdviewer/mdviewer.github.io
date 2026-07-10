@@ -7,7 +7,7 @@ function d$(sel){
 }
 
 // 
-(function main(){
+function main(){
     var url = new URL(location.href);
     var md = url.searchParams.get("md");
 
@@ -17,5 +17,7 @@ function d$(sel){
     }
     const cleanHtml = marked.parse(md);
     d$("body").innerHTML = cleanHtml;
-})();
+}
+
+window.onload = main;
 </script>

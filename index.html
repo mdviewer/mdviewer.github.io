@@ -1,0 +1,21 @@
+<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+
+<script>
+//
+function d$(sel){
+    return document.querySelector(sel);
+}
+
+// 
+(function main(){
+    var url = new URL(location.href);
+    var md = url.searchParams.get("md");
+
+    if (md==null){
+        d$("body").innerHTML = "The param 'md' is needed in URL";
+        return;
+    }
+    const cleanHtml = marked.parse(md);
+    d$("body").innerHTML = cleanHtml;
+})();
+</script>

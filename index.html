@@ -6,6 +6,11 @@ function d$(sel){
     return document.querySelector(sel);
 }
 
+//
+function d$$(sel){
+    return [...document.querySelectorAll(sel)];
+}
+
 // 
 function main(){
     var url = new URL(location.href);
@@ -17,6 +22,10 @@ function main(){
     }
     const cleanHtml = marked.parse(md);
     d$("body").innerHTML = cleanHtml;
+    var eles = d$$("a");
+
+    for (let ele of eles)
+        ele.setAttribute("target","_blank");
 }
 
 window.onload = main;

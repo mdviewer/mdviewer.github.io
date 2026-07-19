@@ -17,8 +17,28 @@ function showMd(md){
     d$("body").innerHTML = cleanHtml;
     var eles = d$$("a");
 
-    for (let ele of eles)
+    for (let ele of eles){
         ele.setAttribute("target","_blank");
+        ele.addEventListener("click",ev=>{
+            var link = ev.target;
+            var href = link.getAttribute("href");
+
+            if (href.toLowerCase().indexOf("app.standardnotes.com")){
+                let text = href.split("?q=")[1];
+                copyToClipboard(text);
+            }
+        });
+    }
+}
+
+//
+async function copyToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    console.log('Text copied to clipboard successfully!');
+  } catch (err) {
+    console.error('Failed to copy text: ', err);
+  }
 }
     
 // 

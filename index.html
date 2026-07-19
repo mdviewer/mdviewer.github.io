@@ -23,7 +23,7 @@ function showMd(md){
             var link = ev.target;
             var href = link.getAttribute("href");
 
-            if (href.toLowerCase().indexOf("app.standardnotes.com")){
+            if (href.toLowerCase().indexOf("app.standardnotes.com") >= 0){
                 let text = href.split("?q=")[1];
                 copyToClipboard(text);
             }

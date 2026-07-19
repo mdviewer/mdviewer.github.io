@@ -1,6 +1,8 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 
 <script>
+var log = console.log;
+    
 //
 function d$(sel){
     return document.querySelector(sel);
@@ -22,9 +24,11 @@ function showMd(md){
         ele.addEventListener("click",ev=>{
             var link = ev.target;
             var href = link.getAttribute("href");
+            log("Link clicked",href);            
 
             if (href.toLowerCase().indexOf("app.standardnotes.com") >= 0){
                 let text = href.split("?q=")[1];
+                log("S Notes caption:",text);
                 copyToClipboard(text);
             }
         });
